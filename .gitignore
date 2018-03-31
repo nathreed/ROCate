@@ -1,10 +1,14 @@
 *.class
 *.iml
+
+# Covers JetBrains IDEs: Eclipse, IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio
+.project
+.classpath
+.settings
 .idea/
+
+# Generated files
 .gradle/
 build/
 bin/
 gen/
-.project
-.settings
-.classpath
