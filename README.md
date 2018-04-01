@@ -18,6 +18,7 @@ Tested in Eclipse Oxygen.3 (4.7.3) - latest version at time of writing
 1. Click browse, navigate to the root folder of the repo you cloned, hit open
 1. Click Finish.
 
+*Note:* For older versions of Eclipse, you would need to start a new Gradle project, empty the folder, pull from here, then run gradle eclipse (You would need to have gradle installed in your system)
 
 Now you have the project properly imported, set up, and you can run the tests.
 
