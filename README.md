@@ -31,7 +31,7 @@ Tested in IDEA Ultimate 2018.1 - latest version at time of writing. You can get 
 1. Check "use auto-import"
 1. Click ok
 
-Now you have the project properly imported, set up, and you can run the tests. You may get some warnings thrown when you run the tests, but they do run and you can see the results in the test GUI.
+Now you have the project properly imported, set up, and you can run the tests.
 
 ## Trilateration Algorithm
 Since the development of the Trilateration algorithm will require MTH 165, we will use this [library](https://github.com/lemmingapex/trilateration) instead. This is already configured for you in the gradle project.
