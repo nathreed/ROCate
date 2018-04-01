@@ -9,36 +9,29 @@ An indoors localization project that aims to locate the users on a college campu
 ## Development Environment Setup
 
 ### Eclipse
-Tested in Eclipse Oxygen.2 (4.7.2) - latest version at time of writing
+Tested in Eclipse Oxygen.3 (4.7.3) - latest version at time of writing
 
 1. Clone files from Git repository using terminal
-1. Create new project in Eclipse
-1. Name ROCate
-1. Uncheck "use default location"
-1. Select root directory of project on your filesystem (the directory containing README.md and src/)
-1. Hit finish
-1. Open src/Coordinates2DTest.java
-1. Hover over first error (line 1)
-1. Select 3rd option (fix project setup)
-1. Hit OK in dialog box
+1. Open Eclipse Marketplace (under help menu on macOS), search "buildship", and install if not already installed.
+1. In eclipse, click File, Import, then select Gradle, Existing Gradle Project
+1. Click Next at the wizard
+1. Click browse, navigate to the root folder of the repo you cloned, hit open
+1. Click Finish.
+
 
 Now you have the project properly imported, set up, and you can run the tests.
 
 
 ### IntelliJ IDEA
-Tested in IDEA Ultimate 2017.3 - latest version at time of writing. You can get Ultimate for free as a student. These instructions should also work for Community Edition (free to all).
-
+Tested in IDEA Ultimate 2018.1 - latest version at time of writing. You can get Ultimate for free as a student. These instructions should also work for Community Edition (free to all).
 
 1. Clone files from Git repository using terminal
-1. Open IDEA, hit File > Open
-1. Navigate to the ROCate directory you cloned
-1. Open src/Coordinates2DTest.java
-1. Select "junit" on line 1 (will be highlighted red because of error)
-1. Activate contextual menu (option-Enter on Mac)
-1. Select "Add JUnit5.0 to classpath"
-1. Hit OK
+1. In IDEA, click File, Open, then navigate to root folder of cloned repo and hit open
+1. A little notification box will pop up in the bottom right asking if you want to import gradle project. Select Import Gradle Project.
+1. Check "use auto-import"
+1. Click ok
 
 Now you have the project properly imported, set up, and you can run the tests. You may get some warnings thrown when you run the tests, but they do run and you can see the results in the test GUI.
 
 ## Trilateration Algorithm
-Since the development of the Trilateration algorithm will require MTH 165, [here is an algorithm](https://github.com/lemmingapex/trilateration)
+Since the development of the Trilateration algorithm will require MTH 165, we will use this [library](https://github.com/lemmingapex/trilateration) instead. This is already configured for you in the gradle project.

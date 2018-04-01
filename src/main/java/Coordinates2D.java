@@ -1,5 +1,6 @@
 import com.lemmingapex.trilateration.NonLinearLeastSquaresSolver;
 
+
 /*
 This class describes a 2D set of coordinates and provides helpful methods for dealing with their geometry
  */
