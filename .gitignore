@@ -12,3 +12,6 @@
 build/
 bin/
 gen/
+
+#IDE output directories should not be included, this covers IDEA's
+out/
