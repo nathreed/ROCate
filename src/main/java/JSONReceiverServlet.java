@@ -1,11 +1,3 @@
-/*
-Name: Nathan Reed
-NetID: nreed7
-Assignment Number: rocate
-No partner
-*/
-
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
