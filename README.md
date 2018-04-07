@@ -9,7 +9,7 @@ An indoors localization project that aims to locate the users on a college campu
 ## Development Environment Setup
 NOTE: Make sure to do both the "IDE Setup" and the "Testing Environment Setup" steps.
 
-###IDE Setup
+### IDE Setup
 Choose your preferred IDE and follow the steps below. If you use a different IDE, you should find out how to import a Gradle project into it.
 #### Eclipse
 Tested in Eclipse Oxygen.3 (4.7.3) - latest version at time of writing
@@ -37,7 +37,7 @@ Tested in IDEA Ultimate 2018.1 - latest version at time of writing. You can get 
 
 Now you have the project properly imported, set up, and you can run the tests.
 
-###Testing Environment Setup
+### Testing Environment Setup
 1. Install [Docker](https://www.docker.com/community-edition#/download). If you are a windows user and don't have Windows 10 Pro, you
 will need to install [Docker Toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/).
 **NOTE:** The docker stuff has not been tested with Docker Toolbox.
