@@ -43,7 +43,7 @@ will need to install [Docker Toolbox](https://docs.docker.com/toolbox/toolbox_in
 **NOTE:** The docker stuff has not been tested with Docker Toolbox.
 2. Technically, you're done now. Some notes:
 - You can start a Docker container running the server app by running
-`./gradlew startDockerContainer`. It will bind to port 8888. So you can go to `http://localhost:8888/rocate` in a web browser to interact with it.
+`./gradlew startDockerContainer` (once Docker is running on your computer - you should just leave it running during work sessions). It will bind to port 8888. So you can go to `http://localhost:8888/rocate` in a web browser to interact with it.
 - You can stop the container with `./gradlew stopDockerContainer`. 
 - You can try adding a run configuration in your IDE of choice
 if you don't want to always be running these commands from the terminal.
