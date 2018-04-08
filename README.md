@@ -3,7 +3,9 @@ An indoors localization project that aims to locate the users on a college campu
 
 ## Classes
 
-- Coordinates2D: A class for storing x,y coordinates on a plane and helpful methods regarding 2D Geometry
+- Coordinates2D: A class for storing x,y coordinates on a plane and helpful methods regarding 2D Geometry.
+- Beacon: Used in the JSON deserialization process. Represents one beacon seen by a client device.
+- JSONReceiverServlet: Receives HTTP POST requests from the client app (yet to be written), deserializes them, and will (eventually) return the client's position to them.
 
 
 ## Development Environment Setup
