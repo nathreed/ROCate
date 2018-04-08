@@ -26,8 +26,11 @@ repositories {
 
 dependencies {
     testCompile("junit:junit:4.12")
-    testCompile("com.lemmingapex.trilateration:trilateration:1.0.2")
+    testCompile("org.mockito:mockito-core:2.7.19")
+    //I don't think this is necessary but if something breaks with tests down the line, probably should have it in
+    //testCompile("com.lemmingapex.trilateration:trilateration:1.0.2")
     compile("com.lemmingapex.trilateration:trilateration:1.0.2")
+    compile("com.google.code.gson:gson:2.8.2")
     providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
 }
 
