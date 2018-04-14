@@ -56,5 +56,8 @@ You only have to do this if you don't want to mess with installing Tomcat on you
 If you already have Tomcat installed or for some other reason don't want to use Docker, you can use `./gradlew war` to get a .war file (will be located in `build/libs`) and
 just put that in the proper directory for your Tomcat install.
 
+#### Note
+You can also have Eclipse JEE to setup Java Servlet and tomcat servers so you can directly run .java on tomcat servers.
+
 ## Trilateration Algorithm
 Since the development of the Trilateration algorithm will require MTH 165, we will use this [library](https://github.com/lemmingapex/trilateration) instead. This is already configured for you in the gradle project.
