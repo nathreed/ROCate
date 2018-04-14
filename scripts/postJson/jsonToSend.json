@@ -1,0 +1,14 @@
+[
+	{
+		"proximityUUID": "uuid1-jdshfk-sjkdf",
+		"major": 12,
+		"minor": 1,
+		"accuracy": 12.2
+	},
+	{
+		"proximityUUID": "uuid2-dsfh-dsfkh",
+		"major": 13,
+		"minor": -1,
+		"accuracy": 13.3
+	}
+]

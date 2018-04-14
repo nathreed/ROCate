@@ -1,0 +1,11 @@
+{
+  "name": "postjson",
+  "version": "1.0.0",
+  "description": "posts json data to rocate position endpoint for testing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": ""
+}
