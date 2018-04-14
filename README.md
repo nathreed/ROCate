@@ -51,5 +51,10 @@ will need to install [Docker Toolbox](https://docs.docker.com/toolbox/toolbox_in
 if you don't want to always be running these commands from the terminal.
 - Don't run any of the other gradle tasks, *especially* those whose names start with `internal` - this will cause issues 
 
+#### Note
+You only have to do this if you don't want to mess with installing Tomcat on your local machine.
+If you already have Tomcat installed or for some other reason don't want to use Docker, you can use `./gradlew war` to get a .war file (will be located in `build/libs`) and
+just put that in the proper directory for your Tomcat install.
+
 ## Trilateration Algorithm
 Since the development of the Trilateration algorithm will require MTH 165, we will use this [library](https://github.com/lemmingapex/trilateration) instead. This is already configured for you in the gradle project.
