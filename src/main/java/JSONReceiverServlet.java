@@ -36,11 +36,14 @@ public class JSONReceiverServlet extends HttpServlet {
         //We have to do this to serialize a collection of beacons incoming from the client
         Type collectionType = new TypeToken<Collection<Beacon>>(){}.getType();
         try {
-            Collection<Beacon> beacons = gson.fromJson(json, collectionType);
+            Beacon[] beacons = gson.fromJson(json, Beacon[].class);
+
             if(beacons == null) {
                 respWriter.print("No JSON POSTed");
                 return;
             }
+
+
             for(Beacon b: beacons) {
                 respWriter.println(b);
             }

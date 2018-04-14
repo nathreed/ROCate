@@ -80,35 +80,4 @@ public class Coordinates2DTest {
         assertFalse(distance.isPresent());
     }
 
-
-    /*
-    Tests for circleIntersection() method
-     */
-    @Test
-    public void circleIntersectionIntersects() {
-        //testObj1 and testObj2 should intersect
-        //Test that they do
-        Optional<Coordinates2D> intersection = testObj1.circleIntersection(testObj2);
-
-        assertTrue(intersection.isPresent());
-        assertEquals(new Coordinates2D(4.0,4.0,0,0), intersection.get());
-
-    }
-
-    @Test
-    public void circleIntersectionNoIntersects() {
-        //Test another case, where the circles do not intersect
-        Coordinates2D testObj3 = new Coordinates2D(50,50,1,2);
-        Optional<Coordinates2D> intersectionResult = testObj2.circleIntersection(testObj3);
-
-        //There should be no intersection
-        assertFalse(intersectionResult.isPresent());
-    }
-
-    @Test
-    public void circleIntersectionNullCircle() {
-        Optional<Coordinates2D> intersection = testObj1.circleIntersection(null);
-        assertFalse(intersection.isPresent());
-    }
-
 }
