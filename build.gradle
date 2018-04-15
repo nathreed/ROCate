@@ -31,6 +31,7 @@ dependencies {
     //testCompile("com.lemmingapex.trilateration:trilateration:1.0.2")
     compile("com.lemmingapex.trilateration:trilateration:1.0.2")
     compile("com.google.code.gson:gson:2.8.2")
+    compile("mysql:mysql-connector-java:5.1.6")
     providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
 }
 
@@ -43,13 +44,23 @@ task createDockerfile(type: Dockerfile) {
 task buildDockerImage(type: DockerBuildImage) {
     dependsOn createDockerfile
     inputDir = createDockerfile.destFile.parentFile
-    tag = "rocate/tomcat:latest"
+    tag = "rocate/rocate"
+}
+
+task createDBContainer(type: DockerCreateContainer) {
+    targetImageId {"mysql:latest"}
+    containerName = "rocate_db"
+    env = ["MYSQL_DATABASE=rocate", "MYSQL_ROOT_PASSWORD=hellorocate", "MYSQL_USER=rocate", "MYSQL_PASSWORD=rocate123"]
 }
 
 task createDockerContainer(type: DockerCreateContainer) {
-    dependsOn buildDockerImage
+    dependsOn = [buildDockerImage, createDBContainer]
     targetImageId {buildDockerImage.getImageId()}
     portBindings = ['8888:8080']
+
+    doFirst {
+        links = ["${createDBContainer.getContainerId()}:database"]
+    }
 }
 
 task dockerDeploy(type: DockerCopyFileToContainer) {
@@ -59,25 +70,57 @@ task dockerDeploy(type: DockerCopyFileToContainer) {
     remotePath = "/usr/local/tomcat/webapps/"
 }
 
+task startDBContainer(type: DockerStartContainer) {
+    dependsOn createDBContainer
+    targetContainerId {createDBContainer.getContainerId()}
+
+    doLast {
+        project.file("build/docker/runningDBContainer.txt").text = """${createDBContainer.getContainerId()}"""
+    }
+}
+
 task startDockerContainer(type: DockerStartContainer) {
-    dependsOn = [dockerDeploy, createDockerContainer]
+    dependsOn = [dockerDeploy, createDockerContainer, startDBContainer]
     targetContainerId {createDockerContainer.getContainerId()}
 
     doLast {
-        project.file("build/docker/runningContainerId.txt").text = """${createDockerContainer.getContainerId()}"""
+        project.file("build/docker/runningAppContainer.txt").text = """${createDockerContainer.getContainerId()}"""
     }
 }
 
 task stopDockerContainer(type: DockerStopContainer) {
-    targetContainerId { project.file("build/docker/runningContainerId.txt").text }
+    /*
+    So the flow is a bit convoluted here (maybe could be cleaned up) but it goes like this
+    1. Stop app container
+    2. internalContainerCleanup -> internalCleanupDBContainer -> stopDBContainer
+    3. Stop DB container
+    4. internalCleanupAppContainer
+    5. internalDeleteContainerId
+     */
+    targetContainerId { project.file("build/docker/runningAppContainer.txt").text }
     finalizedBy {internalContainerCleanup}
 }
 
-task internalContainerCleanup(type: DockerRemoveContainer) {
-    targetContainerId { project.file("build/docker/runningContainerId.txt").text }
+task internalContainerCleanup() {
+    dependsOn {internalCleanupDBContainer}
+    finalizedBy {internalCleanupAppContainer}
+}
+
+task stopDBContainer(type: DockerStopContainer) {
+    targetContainerId {project.file("build/docker/runningDBContainer.txt").text}
+}
+
+task internalCleanupAppContainer(type: DockerRemoveContainer) {
+    targetContainerId { project.file("build/docker/runningAppContainer.txt").text }
     finalizedBy {internalDeleteContainerId}
 }
 
+task internalCleanupDBContainer(type: DockerRemoveContainer) {
+    dependsOn {stopDBContainer}
+    targetContainerId { project.file("build/docker/runningDBContainer.txt").text }
+}
+
 task internalDeleteContainerId(type: Delete) {
-    delete "build/docker/runningContainerId.txt"
+    delete "build/docker/runningAppContainer.txt"
+    delete "build/docker/runningDBContainer.txt"
 }

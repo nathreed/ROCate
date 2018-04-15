@@ -1,7 +1,5 @@
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
-import com.google.gson.reflect.TypeToken;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,15 +9,21 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.lang.reflect.Type;
-import java.util.Collection;
 
 @WebServlet(name = "JSONReceiverServlet", urlPatterns = {"/position"}, loadOnStartup = 1)
 public class JSONReceiverServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.getWriter().print("Hello, World!");
+        response.getWriter().println("Hello, World!");
+        try {
+            DBConnector db = new DBConnector();
+            response.getWriter().print(db.testTableContents());
+        } catch (Exception e) {
+            response.getWriter().println("Error constructing DB connector: " + e.getMessage());
+        }
+
+
     }
 
     @Override
@@ -33,8 +37,6 @@ public class JSONReceiverServlet extends HttpServlet {
         }
 
         Gson gson = new Gson();
-        //We have to do this to serialize a collection of beacons incoming from the client
-        Type collectionType = new TypeToken<Collection<Beacon>>(){}.getType();
         try {
             Beacon[] beacons = gson.fromJson(json, Beacon[].class);
 

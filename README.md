@@ -43,7 +43,8 @@ Now you have the project properly imported, set up, and you can run the tests.
 1. Install [Docker](https://www.docker.com/community-edition#/download). If you are a windows user and don't have Windows 10 Pro, you
 will need to install [Docker Toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/).
 **NOTE:** The docker stuff has not been tested with Docker Toolbox.
-2. Technically, you're done now. Some notes:
+2. Run `docker pull tomcat:9-jre8` and `docker pull mysql:latest` to download the images for the containers we need.
+3. Technically, you're done now. Some notes:
 - You can start a Docker container running the server app by running
 `./gradlew startDockerContainer` (once Docker is running on your computer - you should just leave it running during work sessions). It will bind to port 8888. So you can go to `http://localhost:8888/rocate` in a web browser to interact with it.
 - You can stop the container with `./gradlew stopDockerContainer`. 
